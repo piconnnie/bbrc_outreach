@@ -11,6 +11,8 @@ import glob
 
 # Add parent directory to path to allow importing agents if needed
 sys.path.append(os.path.dirname(os.path.dirname(os.path.abspath(__file__))))
+# Add current directory to path to allow importing local modules (database.py) when running from root
+sys.path.append(os.path.dirname(os.path.abspath(__file__)))
 
 app = Flask(__name__)
 CORS(app) # Enable CORS for all routes
