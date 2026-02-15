@@ -1,0 +1,8 @@
+requests
+pandas
+pyyaml
+biopython
+dnspython
+schedule
+flask
+flask-cors

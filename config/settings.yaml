@@ -1,0 +1,22 @@
+# Global Settings for BBRC Outreach Agent
+
+# Agent 1: Research Discovery
+discovery:
+  source: "pubmed"
+  days_back: 7
+  max_results: 100
+  email: "your_email@example.com" # Required for PubMed API
+
+# Agent 5: Outreach Orchestration
+outreach:
+  sender_email: "your_sender_email@zoho.com" # Configure in .env
+  smtp_server: "smtp.zoho.com"
+  smtp_port: 465 # SSL
+  batch_size: 50
+  delay_seconds: 60 # Delay between emails
+  max_daily_emails: 500
+
+# Logging
+logging:
+  level: "INFO"
+  log_file: "data/logs/bbrc_agent.log"
