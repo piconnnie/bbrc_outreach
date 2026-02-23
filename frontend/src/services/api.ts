@@ -74,5 +74,22 @@ export const api = {
         const response = await fetch(`${API_BASE_URL}/logs`);
         if (!response.ok) throw new Error('Failed to fetch logs');
         return response.json();
+    },
+
+    getTemplate: async (): Promise<string> => {
+        const response = await fetch(`${API_BASE_URL}/template`);
+        if (!response.ok) throw new Error('Failed to fetch template');
+        const data = await response.json();
+        return data.template;
+    },
+
+    updateTemplate: async (template: string) => {
+        const response = await fetch(`${API_BASE_URL}/template`, {
+            method: 'POST',
+            headers: { 'Content-Type': 'application/json' },
+            body: JSON.stringify({ template }),
+        });
+        if (!response.ok) throw new Error('Failed to update template');
+        return response.json();
     }
 };

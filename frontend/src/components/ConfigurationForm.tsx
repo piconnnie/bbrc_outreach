@@ -1,25 +1,30 @@
 import { useEffect, useState } from 'react';
-import { Save, Settings, Hash, Clock, Mail, RotateCw } from 'lucide-react';
+import { Save, Settings, Hash, Clock, Mail, RotateCw, FileText } from 'lucide-react';
 import { motion } from 'framer-motion';
 import { api, Config } from '../services/api';
 import toast from 'react-hot-toast';
 
 export const ConfigurationForm = () => {
     const [config, setConfig] = useState<Config | null>(null);
+    const [template, setTemplate] = useState<string>('');
     const [loading, setLoading] = useState(true);
     const [saving, setSaving] = useState(false);
 
     useEffect(() => {
-        loadConfig();
+        loadConfigAndTemplate();
     }, []);
 
-    const loadConfig = async () => {
+    const loadConfigAndTemplate = async () => {
         try {
-            const data = await api.getConfig();
-            setConfig(data);
+            const [configData, templateData] = await Promise.all([
+                api.getConfig(),
+                api.getTemplate()
+            ]);
+            setConfig(configData);
+            setTemplate(templateData);
         } catch (error) {
             console.error(error);
-            toast.error("Failed to load settings");
+            toast.error("Failed to load settings or template");
         } finally {
             setLoading(false);
         }
@@ -33,7 +38,10 @@ export const ConfigurationForm = () => {
         const toastId = toast.loading("Saving changes...");
 
         try {
-            await api.updateConfig(config);
+            await Promise.all([
+                api.updateConfig(config),
+                api.updateTemplate(template)
+            ]);
             toast.success("Settings saved successfully", { id: toastId });
         } catch (error) {
             console.error(error);
@@ -158,11 +166,39 @@ export const ConfigurationForm = () => {
                         <label className="block text-sm font-semibold text-slate-700 mb-2">Email Subject Line</label>
                         <input
                             type="text"
-                            className="w-full px-4 py-3 rounded-xl border border-slate-200 focus:border-emerald-500 focus:ring-2 focus:ring-emerald-200 outline-none transition-all text-sm"
+                            className="w-full px-4 py-3 rounded-xl border border-slate-200 focus:border-emerald-500 focus:ring-2 focus:ring-emerald-200 outline-none transition-all text-sm opacity-50 cursor-not-allowed"
+                            disabled
                             defaultValue="Invitation to submit research to Bioscience Biotechnology Research Communications (BBRC)"
                         />
-                        <p className="text-xs text-slate-400 mt-2">Currently updated directly in email templates (v2 feature).</p>
+                        <p className="text-xs text-slate-400 mt-2">Subject lines must be changed directly in the backend code structure currently.</p>
                     </div>
+                </div>
+            </div>
+
+            {/* Template Settings */}
+            <div className="bg-white rounded-2xl border border-slate-200 shadow-sm overflow-hidden">
+                <div className="p-6 border-b border-slate-100 bg-slate-50/50 flex items-center gap-3">
+                    <div className="p-2 bg-violet-100 text-violet-600 rounded-lg">
+                        <FileText size={20} />
+                    </div>
+                    <div>
+                        <h3 className="font-bold text-slate-800">Email Template</h3>
+                        <p className="text-xs text-slate-500">Edit the raw email body sent to authors</p>
+                    </div>
+                </div>
+
+                <div className="p-6">
+                    <label className="block text-sm font-semibold text-slate-700 mb-2">Message Body</label>
+                    <textarea
+                        className="w-full px-4 py-3 rounded-xl border border-slate-200 focus:border-emerald-500 focus:ring-2 focus:ring-emerald-200 outline-none transition-all text-sm font-mono"
+                        rows={12}
+                        value={template}
+                        onChange={(e) => setTemplate(e.target.value)}
+                        placeholder="Dear {author_name}..."
+                    />
+                    <p className="text-xs text-slate-400 mt-2">
+                        Available placeholders: <code>{'{author_name}'}</code>, <code>{'{paper_title}'}</code>, <code>{'{journal}'}</code>.
+                    </p>
                 </div>
             </div>
 

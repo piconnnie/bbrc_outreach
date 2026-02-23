@@ -20,6 +20,7 @@ CORS(app) # Enable CORS for all routes
 BASE_DIR = os.path.dirname(os.path.abspath(__file__))
 CONFIG_PATH = os.path.join(BASE_DIR, "../config/settings.yaml")
 KEYWORDS_PATH = os.path.join(BASE_DIR, "../config/keywords.json")
+TEMPLATE_PATH = os.path.join(BASE_DIR, "../config/templates/cfp_email.txt")
 LOG_DIR = os.path.join(BASE_DIR, "../data/logs")
 
 def load_yaml(path):
@@ -135,6 +136,30 @@ def update_config():
             json.dump(keywords, f, indent=2)
             
     return jsonify({"status": "updated"})
+
+@app.route('/api/template', methods=['GET'])
+def get_template():
+    try:
+        if os.path.exists(TEMPLATE_PATH):
+            with open(TEMPLATE_PATH, 'r', encoding='utf-8') as f:
+                content = f.read()
+            return jsonify({"template": content})
+        return jsonify({"template": ""}), 404
+    except Exception as e:
+        return jsonify({"error": str(e)}), 500
+
+@app.route('/api/template', methods=['POST'])
+def update_template():
+    data = request.json
+    template_content = data.get('template', '')
+    
+    try:
+        os.makedirs(os.path.dirname(TEMPLATE_PATH), exist_ok=True)
+        with open(TEMPLATE_PATH, 'w', encoding='utf-8') as f:
+            f.write(template_content)
+        return jsonify({"status": "updated"})
+    except Exception as e:
+        return jsonify({"error": str(e)}), 500
 
 @app.route('/api/agents/<name>/start', methods=['POST'])
 def start_agent(name):
