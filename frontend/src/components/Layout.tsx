@@ -84,7 +84,7 @@ export const Layout = ({ children }: LayoutProps) => {
                                 >
                                     {activeTab === 'dashboard' && children}
                                     {activeTab === 'authors' && <Authors />}
-                                    {activeTab === 'outreach' && <Outreach />}
+                                    {activeTab === 'outreach' && <Outreach onEditConfig={() => setActiveTab('settings')} />}
                                     {activeTab === 'logs' && <Logs />}
                                     {activeTab === 'settings' && <ConfigurationForm />}
                                 </motion.div>

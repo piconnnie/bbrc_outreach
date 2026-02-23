@@ -1,6 +1,6 @@
 import React from 'react';
 import { Users, Mail, Play, Activity, FileText, TrendingUp, MoreHorizontal } from 'lucide-react';
-import { api } from '../services/api';
+import { api, API_BASE_URL } from '../services/api';
 import toast from 'react-hot-toast';
 import { cn } from '../lib/utils';
 import { AreaChart, Area, XAxis, YAxis, CartesianGrid, Tooltip, ResponsiveContainer } from 'recharts';
@@ -125,6 +125,11 @@ export const Dashboard = () => {
         }
     };
 
+    const handleDownloadReport = () => {
+        window.location.href = `${API_BASE_URL}/authors/export`;
+        toast.success("Download started");
+    };
+
     React.useEffect(() => {
         fetchStats();
         const interval = setInterval(fetchStats, 10000);
@@ -162,10 +167,10 @@ export const Dashboard = () => {
                     <p className="text-sm text-slate-500 mt-1">Welcome back, Administrator.</p>
                 </div>
                 <div className="flex gap-3">
-                    <button className="px-4 py-2 bg-white border border-slate-200 text-slate-600 text-sm font-semibold rounded-lg hover:bg-slate-50 transition-colors">
+                    <button onClick={handleDownloadReport} className="px-4 py-2 bg-white border border-slate-200 text-slate-600 text-sm font-semibold rounded-lg hover:bg-slate-50 transition-colors">
                         Download Report
                     </button>
-                    <button className="px-4 py-2 bg-blue-600 text-white text-sm font-semibold rounded-lg hover:bg-blue-700 shadow-sm shadow-blue-600/20 transition-colors">
+                    <button onClick={() => toast("Navigate to Outreach tab to start a campaign.")} className="px-4 py-2 bg-blue-600 text-white text-sm font-semibold rounded-lg hover:bg-blue-700 shadow-sm shadow-blue-600/20 transition-colors">
                         + New Campaign
                     </button>
                 </div>

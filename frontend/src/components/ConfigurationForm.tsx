@@ -103,7 +103,7 @@ export const ConfigurationForm = () => {
                                 type="number"
                                 className="w-full px-4 py-3 rounded-xl border border-slate-200 focus:border-emerald-500 focus:ring-2 focus:ring-emerald-200 outline-none transition-all text-sm"
                                 value={config.discovery.days_back}
-                                onChange={(e) => updateConfig('discovery', 'days_back', parseInt(e.target.value))}
+                                onChange={(e) => updateConfig('discovery', 'days_back', parseInt(e.target.value) || 0)}
                             />
                         </div>
                         <div>
@@ -112,7 +112,7 @@ export const ConfigurationForm = () => {
                                 type="number"
                                 className="w-full px-4 py-3 rounded-xl border border-slate-200 focus:border-emerald-500 focus:ring-2 focus:ring-emerald-200 outline-none transition-all text-sm"
                                 value={config.discovery.max_results}
-                                onChange={(e) => updateConfig('discovery', 'max_results', parseInt(e.target.value))}
+                                onChange={(e) => updateConfig('discovery', 'max_results', parseInt(e.target.value) || 0)}
                             />
                         </div>
                     </div>
@@ -140,7 +140,7 @@ export const ConfigurationForm = () => {
                             type="number"
                             className="w-full px-4 py-3 rounded-xl border border-slate-200 focus:border-emerald-500 focus:ring-2 focus:ring-emerald-200 outline-none transition-all text-sm"
                             value={config.outreach.max_daily_emails}
-                            onChange={(e) => updateConfig('outreach', 'max_daily_emails', parseInt(e.target.value))}
+                            onChange={(e) => updateConfig('outreach', 'max_daily_emails', parseInt(e.target.value) || 0)}
                         />
                     </div>
                     <div>
@@ -151,7 +151,7 @@ export const ConfigurationForm = () => {
                             type="number"
                             className="w-full px-4 py-3 rounded-xl border border-slate-200 focus:border-emerald-500 focus:ring-2 focus:ring-emerald-200 outline-none transition-all text-sm"
                             value={config.outreach.retry_attempts}
-                            onChange={(e) => updateConfig('outreach', 'retry_attempts', parseInt(e.target.value))}
+                            onChange={(e) => updateConfig('outreach', 'retry_attempts', parseInt(e.target.value) || 0)}
                         />
                     </div>
                     <div className="md:col-span-2">

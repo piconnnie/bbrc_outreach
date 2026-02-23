@@ -1,5 +1,5 @@
 import { useEffect, useState, useRef } from 'react';
-import { Terminal, RefreshCw, Pause, Play, Download } from 'lucide-react';
+import { Terminal, RefreshCw, Pause, Play, Copy } from 'lucide-react';
 import { api } from '../services/api';
 import toast from 'react-hot-toast';
 import { cn } from '../lib/utils';
@@ -61,7 +61,7 @@ export const Logs = () => {
                         onClick={handleCopyLogs}
                         className="flex items-center gap-2 px-3 py-1.5 bg-white border border-slate-200 rounded-lg text-sm font-medium text-slate-600 hover:bg-slate-50 transition-colors"
                     >
-                        <Download size={14} />
+                        <Copy size={14} />
                         Copy
                     </button>
                     <button

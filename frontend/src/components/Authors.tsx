@@ -1,7 +1,7 @@
 import { useEffect, useState } from 'react';
 import { Download, RefreshCw, Database, Search, ChevronLeft, ChevronRight, Mail, User, FileText } from 'lucide-react';
 import { motion } from 'framer-motion';
-import { api } from '../services/api';
+import { api, API_BASE_URL } from '../services/api';
 import toast from 'react-hot-toast';
 
 
@@ -50,7 +50,7 @@ export const Authors = () => {
     };
 
     const handleExport = () => {
-        window.location.href = 'http://localhost:5000/api/authors/export';
+        window.location.href = `${API_BASE_URL}/authors/export`;
         toast.success("Export started");
     };
 

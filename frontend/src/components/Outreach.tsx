@@ -5,7 +5,11 @@ import { api } from '../services/api';
 import toast from 'react-hot-toast';
 import { cn } from '../lib/utils';
 
-export const Outreach = () => {
+interface OutreachProps {
+    onEditConfig?: () => void;
+}
+
+export const Outreach = ({ onEditConfig }: OutreachProps) => {
     const [status, setStatus] = useState<'idle' | 'running' | 'completed' | 'error'>('idle');
     const [stats, setStats] = useState({ sent: 0, pending: 0, failed: 0 });
 
@@ -159,7 +163,14 @@ export const Outreach = () => {
                         </div>
                     </div>
 
-                    <button className="text-emerald-400 text-sm font-medium hover:text-emerald-300 transition-colors mt-8 flex items-center gap-2">
+                    <button
+                        type="button"
+                        onClick={(e) => {
+                            e.preventDefault();
+                            if (onEditConfig) onEditConfig();
+                        }}
+                        className="text-emerald-400 text-sm font-medium hover:text-emerald-300 transition-colors mt-8 flex items-center gap-2 relative z-20 cursor-pointer"
+                    >
                         Edit Configuration <ArrowUpRight size={14} />
                     </button>
                 </div>
