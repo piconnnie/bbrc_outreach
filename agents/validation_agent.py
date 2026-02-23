@@ -75,11 +75,11 @@ def validate_and_dedup(candidates, history):
         if valid_emails:
             # Create a clean record for outreach
             clean_record = {
-                'name': candidate['name'],
-                'first_name': candidate['first_name'],
+                'name': candidate.get('name', ''),
+                'first_name': candidate.get('first_name', ''),
                 'email': valid_emails[0], # Pick first valid for now
-                'paper_title': candidate['paper_title'],
-                'journal': candidate['journal']
+                'paper_title': candidate.get('paper_title', ''),
+                'journal': candidate.get('journal', '')
             }
             validated_list.append(clean_record)
             
@@ -96,6 +96,7 @@ def main():
     final_list = validate_and_dedup(candidates, history)
     
     output_file = "data/validated_list/ready_to_send.json"
+    os.makedirs(os.path.dirname(output_file), exist_ok=True)
     with open(output_file, 'w') as f:
         json.dump(final_list, f, indent=2)
         
