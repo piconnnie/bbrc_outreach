@@ -231,7 +231,7 @@ export const Dashboard = () => {
                     <div className="flex items-center justify-between mb-6">
                         <h3 className="text-lg font-bold text-slate-800">Active Agents</h3>
                         <div className="px-2 py-1 bg-green-50 text-green-600 text-xs font-bold rounded-full">
-                            3 Running
+                            5 Available
                         </div>
                     </div>
 
@@ -247,6 +247,18 @@ export const Dashboard = () => {
                             status={agentStatus['profiling'] || 'idle'}
                             onStart={() => handleStartAgent('Profiling Agent', 'profiling')}
                             loading={!!agentStatus['profiling'] && agentStatus['profiling'] !== 'idle'}
+                        />
+                        <AgentRow
+                            name="Email Discovery Agent"
+                            status={agentStatus['email'] || 'idle'}
+                            onStart={() => handleStartAgent('Email Discovery', 'email')}
+                            loading={!!agentStatus['email'] && agentStatus['email'] !== 'idle'}
+                        />
+                        <AgentRow
+                            name="Validation Agent"
+                            status={agentStatus['validation'] || 'idle'}
+                            onStart={() => handleStartAgent('Validation Agent', 'validation')}
+                            loading={!!agentStatus['validation'] && agentStatus['validation'] !== 'idle'}
                         />
                         <AgentRow
                             name="Outreach Agent"
