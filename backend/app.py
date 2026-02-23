@@ -214,7 +214,7 @@ def get_logs():
     try:
         log_file = os.path.join(LOG_DIR, "bbrc_agent.log")
         if not os.path.exists(log_file):
-            return jsonify({"logs": ["Log file not found."]})
+            return jsonify({"logs": ["Waiting for agent execution... No logs yet."]})
             
         with open(log_file, 'r') as f:
             # Read last 100 lines
