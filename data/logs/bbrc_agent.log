@@ -3,3 +3,44 @@
 2026-02-23 17:48:05,841 - ValidationAgent - INFO - Starting Validation Agent...
 2026-02-23 17:48:05,845 - ValidationAgent - INFO - Loaded 842 candidates and 0 history records.
 2026-02-23 17:48:05,853 - ValidationAgent - INFO - Prepared 842 authors for outreach in data/validated_list/ready_to_send.json
+2026-03-06 22:01:48,301 - OutreachAgent - INFO - Starting Outreach Agent...
+2026-03-06 22:01:48,313 - OutreachAgent - INFO - Loaded 842 candidates. Processing...
+2026-03-06 22:02:11,770 - DiscoveryAgent - INFO - Starting Research Discovery Agent...
+2026-03-06 22:02:11,772 - DiscoveryAgent - INFO - Searching for: biotechnology
+2026-03-06 22:02:12,191 - ProfilingAgent - INFO - Starting Author Profiling Agent...
+2026-03-06 22:02:12,193 - ProfilingAgent - INFO - Processing latest file: data/raw_papers\papers_20260215_211757.json
+2026-03-06 22:02:12,209 - ProfilingAgent - INFO - Extracted 6044 author profiles
+2026-03-06 22:02:12,311 - ProfilingAgent - INFO - Saved profiles to data/authors/profiles_latest.json
+2026-03-06 22:02:13,384 - EmailDiscoveryAgent - INFO - Starting Email Discovery Agent...
+2026-03-06 22:02:13,420 - EmailDiscoveryAgent - INFO - Loaded 6044 profiles.
+2026-03-06 22:02:13,516 - EmailDiscoveryAgent - INFO - Found emails for 842 authors.
+2026-03-06 22:02:13,534 - EmailDiscoveryAgent - INFO - Saved 842 enriched profiles to data/authors/profiles_with_emails.json
+2026-03-06 22:05:40,589 - DiscoveryAgent - INFO - Starting Research Discovery Agent...
+2026-03-06 22:05:40,590 - DiscoveryAgent - INFO - Searching for: biotechnology
+2026-03-06 22:05:51,935 - DiscoveryAgent - INFO - Found 999 papers for 'biotechnology'
+2026-03-06 22:05:51,935 - DiscoveryAgent - INFO - Searching for: biomedical research
+2026-03-06 22:06:16,401 - DiscoveryAgent - INFO - Found 1000 papers for 'biomedical research'
+2026-03-06 22:06:16,401 - DiscoveryAgent - INFO - Searching for: molecular biology
+2026-03-06 22:06:31,086 - DiscoveryAgent - INFO - Found 1000 papers for 'molecular biology'
+2026-03-06 22:06:31,086 - DiscoveryAgent - INFO - Searching for: genetics
+2026-03-06 22:06:48,723 - DiscoveryAgent - INFO - Found 997 papers for 'genetics'
+2026-03-06 22:06:48,724 - DiscoveryAgent - INFO - Searching for: bioinformatics
+2026-03-06 22:07:14,547 - DiscoveryAgent - INFO - Found 1000 papers for 'bioinformatics'
+2026-03-06 22:07:14,548 - DiscoveryAgent - INFO - Searching for: clinical trials
+2026-03-06 22:07:27,541 - DiscoveryAgent - INFO - Found 999 papers for 'clinical trials'
+2026-03-06 22:07:27,542 - DiscoveryAgent - INFO - Searching for: drug coding
+2026-03-06 22:07:34,379 - DiscoveryAgent - INFO - Found 219 papers for 'drug coding'
+2026-03-06 22:07:34,379 - DiscoveryAgent - INFO - Searching for: pharmacology
+2026-03-06 22:07:50,462 - DiscoveryAgent - INFO - Found 999 papers for 'pharmacology'
+2026-03-06 22:07:51,800 - DiscoveryAgent - INFO - Saved 5980 unique papers to data/raw_papers/papers_20260306_220750.json
+2026-03-06 22:08:19,201 - ProfilingAgent - INFO - Starting Author Profiling Agent...
+2026-03-06 22:08:19,201 - ProfilingAgent - INFO - Processing latest file: data/raw_papers\papers_20260306_220750.json
+2026-03-06 22:08:19,393 - ProfilingAgent - INFO - Extracted 53078 author profiles
+2026-03-06 22:08:20,290 - ProfilingAgent - INFO - Saved profiles to data/authors/profiles_latest.json
+2026-03-06 22:08:30,591 - EmailDiscoveryAgent - INFO - Starting Email Discovery Agent...
+2026-03-06 22:08:30,788 - EmailDiscoveryAgent - INFO - Loaded 53078 profiles.
+2026-03-06 22:08:30,989 - EmailDiscoveryAgent - INFO - Found emails for 4634 authors.
+2026-03-06 22:08:31,085 - EmailDiscoveryAgent - INFO - Saved 4634 enriched profiles to data/authors/profiles_with_emails.json
+2026-03-06 22:08:47,891 - ValidationAgent - INFO - Starting Validation Agent...
+2026-03-06 22:08:47,910 - ValidationAgent - INFO - Loaded 4634 candidates and 0 history records.
+2026-03-06 22:08:47,975 - ValidationAgent - INFO - Prepared 4634 authors for outreach in data/validated_list/ready_to_send.json

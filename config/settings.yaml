@@ -3,8 +3,8 @@
 # Agent 1: Research Discovery
 discovery:
   source: "pubmed"
-  days_back: 7
-  max_results: 100
+  days_back: 30
+  max_results: 1000
   email: "your_email@example.com" # Required for PubMed API
 
 # Agent 5: Outreach Orchestration
